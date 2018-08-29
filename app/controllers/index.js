@@ -20,7 +20,7 @@ module.exports.autenticar = function(application, req, res){
 	var usuariosDAO = new application.app.models.UsuariosDAO(connection);
 
 	usuariosDAO.autentica(dadosForm, req, res);
-	
+
 	//res.send("ok na session");
 
 }

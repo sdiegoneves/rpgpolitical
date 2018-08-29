@@ -20,27 +20,39 @@
 				$('#btn_suditos').click(function(){
 					$.ajax({
 						  url: "/suditos",
-						  beforeSend: function( xhr ) {
-						    xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+						  method: "get",
+						  success: function(data){
+						  	$('.acoes').html(data);
 						  }
-						}).done(function( data ) {
-							$('.acoes').html(data);
-						});
+					});
 				});
 
 
 				$('#btn_pergaminho').click(function(){
 					$.ajax({
 						  url: "/pergaminhos",
-						  beforeSend: function( xhr ) {
-						    xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+						  method: "get",
+						  success: function(data){
+						  	$('.acoes').html(data);
+						  	
+						  	cronometro();
 						  }
-						}).done(function( data ) {
-							$('.acoes').html(data);
-						});
+					});
 				});
 			});
 
+			
+
+			function cronometro() {
+				$(".tempo_restante").each(function(){
+					var segundos = $(this).html();
+					var segundosAtuais = parseInt(segundos) - 1;
+
+					$(this).html(segundosAtuais);
+				});
+			}
+
+			setTimeout('cronometro()', 1000);
 
 		</script>
 
